@@ -1,3 +1,11 @@
+<style>
+    /* .dataTables_length {
+        display: none;
+    } */
+    .selected {
+        background-color: #add8e6;
+    }
+</style>
 <!-- Modal -->
 <div class="modal fade" id="modalthajaran" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -10,24 +18,19 @@
                 <table id="thajaran" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID</th>
+                            <th>Semester</th>
+                            <th>Tahun Ajaran</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011-04-25</td>
-                            <td>$320,800</td>
-                        </tr>
-
+                        <?php foreach ($thn_ajaran as $th) : ?>
+                            <tr>
+                                <td><?= $th['id_thn_ajaran']; ?></td>
+                                <td><?= $th['semester']; ?></td>
+                                <td><?= $th['thn_ajaran']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 <script>
@@ -35,6 +38,34 @@
                         $('#thajaran').DataTable();
                     });
                 </script>
+                <script>
+                    var table = document.getElementById("thajaran");
+                    var rows = table.getElementsByTagName("tr");
+
+                    for (var i = 0; i < rows.length; i++) {
+                        rows[i].onclick = function() {
+                            // Reset warna pada semua baris
+                            for (var j = 0; j < rows.length; j++) {
+                                rows[j].classList.remove("selected");
+                            }
+
+                            // Tambahkan warna pada baris yang dipilih
+                            this.classList.add("selected");
+
+                            // Ambil data dari kolom pertama pada baris yang dipilih
+                            var id = this.cells[0].innerHTML;
+                            var semestar = this.cells[1].innerHTML;
+                            var thn = this.cells[2].innerHTML;
+
+                            // Set data ke input
+                            var input = document.getElementsByClassName("input_ajaran")[0];
+                            var input2 = document.getElementsByClassName("input_ajaran2")[0];
+                            input2.value = id;
+                            input.value = semestar + " - " + thn;
+                        };
+                    }
+                </script>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
