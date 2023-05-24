@@ -38,24 +38,29 @@
                                                         Nama Siswa
                                                         <div class="input-group input-group-sm mb-2">
                                                             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                                                            <input value="<?= $sis['nama_siswa']; ?>" name="nama_siswa" id="nama_siswa" type="text" class="form-control" placeholder="Nama">
+                                                            <input value="<?= $sis['nama_siswa']; ?>" name="nama_siswa" id="nama_siswa" type="text" class="form-control" placeholder="Nama" readonly>
                                                         </div>
                                                         Alamat Siswa
                                                         <div class="input-group input-group-sm mb-2">
                                                             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                                                            <input value="<?= $sis['alamat_siswa']; ?>" name="nama_siswa" id="nama_siswa" type="text" class="form-control" placeholder="Nama">
+                                                            <input value="<?= $sis['alamat_siswa']; ?>" name="nama_siswa" id="nama_siswa" type="text" class="form-control" placeholder="Nama" readonly>
+                                                        </div>
+                                                        Kelas Siswa
+                                                        <div class="input-group input-group-sm mb-2">
+                                                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                                                            <input value="<?= $sis['nama_kelas']; ?>" name="nama_siswa" id="nama_siswa" type="text" class="form-control" placeholder="Nama" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         No Telephone Siswa
                                                         <div class="input-group input-group-sm mb-2">
                                                             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                                                            <input value="<?= $sis['telp_siswa']; ?>" name="nama_siswa" id="nama_siswa" type="text" class="form-control" placeholder="Nama">
+                                                            <input value="<?= $sis['telp_siswa']; ?>" name="nama_siswa" id="nama_siswa" type="text" class="form-control" placeholder="Nama" readonly>
                                                         </div>
                                                         Tanggal Di buat
                                                         <div class="input-group input-group-sm mb-2">
                                                             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                                                            <input value="<?= $sis['created_at']; ?>" name="nama_siswa" id="nama_siswa" type="text" class="form-control" placeholder="Nama">
+                                                            <input value="<?= $sis['created_at']; ?>" name="nama_siswa" id="nama_siswa" type="text" class="form-control" placeholder="Kelas" readonly>
                                                         </div>
                                                         Aksi <br>
                                                         <button type="button" class="btn btn-sm btn-primary">Simpan</button>
@@ -76,16 +81,6 @@
                         <!-- modal end -->
                     <?php endforeach ?>
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Alamat</th>
-                        <th>No Telp</th>
-                        <th>Detail</th>
-                    </tr>
-
-                </tfoot>
             </table>
             <script>
                 $(document).ready(function() {

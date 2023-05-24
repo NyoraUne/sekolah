@@ -22,9 +22,9 @@
                         Kelas Siswa
                         <select name="kelas_siswa" id="kelas_siswa" class="form-select form-select-sm mb-3">
                             <option selected>Pilih Kelas Untuk Siswa</option>
-                            <option value="Kelas 1">Kelas 1 SMA</option>
-                            <option value="Kelas 2">Kelas 2 SMA</option>
-                            <option value="Kelas 3">Kelas 3 SMA</option>
+                            <?php foreach ($kelas as $k) : ?>
+                                <option value="<?= $k['id_kelas']; ?>"><?= $k['nama_kelas']; ?></option>
+                            <?php endforeach ?>
                         </select>
                         <button type="reset" class="btn btn-primary btn-sm">Reset</button>
                         <button type="submit" class="btn btn-primary btn-sm">Simpan</button>

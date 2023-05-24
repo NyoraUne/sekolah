@@ -5,13 +5,11 @@ namespace App\Controllers;
 use App\Models\Mod_Kelas;
 use App\Models\Mod_Thajaran;
 use App\Models\Mod_Nilai;
-use App\Models\Mod_Kelas_Siswa;
 
 
 class Nilai extends BaseController
 {
     protected $Mod_Kelas;
-    protected $Mod_Kelas_Siswa;
     protected $Mod_Thajaran;
     protected $Mod_Nilai;
 
@@ -19,7 +17,6 @@ class Nilai extends BaseController
 
     public function __construct()
     {
-        $this->Mod_Kelas_Siswa = model(Mod_Kelas_Siswa::class);
         $this->Mod_Kelas = model(Mod_Kelas::class);
         $this->Mod_Thajaran = model(Mod_Thajaran::class);
         $this->Mod_Nilai = model(Mod_Nilai::class);
@@ -27,8 +24,6 @@ class Nilai extends BaseController
 
     public function index()
     {
-
-        $Mod_Kelas_Siswa = new Mod_Kelas_Siswa();
 
         $Mod_Kelas = new Mod_Kelas();
         $kelas = $Mod_Kelas->findAll();
@@ -48,15 +43,14 @@ class Nilai extends BaseController
 
         if ($kelas_data == '' && $status == '' && $thn == '') {
 
-
-
-            $nilai = $Mod_Kelas_Siswa->select('*')
+            $nilai = $Mod_Nilai->select('*')
+                ->join('thn_ajaran', 'thn_ajaran.id_thn_ajaran = nilai.id_thn_ajaran')
+                ->join('mapel', 'mapel.id_mapel = nilai.id_mapel')
+                ->join('kelas_siswa', 'kelas_siswa.id_kelas_siswa = nilai.id_kelas_siswa')
                 ->join('kelas', 'kelas.id_kelas = kelas_siswa.id_kelas')
                 ->join('siswa', 'siswa.id_siswa = kelas_siswa.id_siswa')
                 ->findAll();
 
-
-            // dd($nilai);
             $data = [
                 'kelas' => $kelas,
                 'thn_ajaran' => $thn_ajaran,
@@ -67,15 +61,19 @@ class Nilai extends BaseController
             echo view('nilai_siswa/index', $data);
             echo view('nav/foot');
         } else {
-            $nilai2 = $Mod_Kelas_Siswa->select('*')
+            return redirect()->to('Nilai/filter');
+            $nilai2 = $Mod_Nilai->select('*')
+                ->join('thn_ajaran', 'thn_ajaran.id_thn_ajaran = nilai.id_thn_ajaran')
+                ->join('mapel', 'mapel.id_mapel = nilai.id_mapel')
+                ->join('kelas_siswa', 'kelas_siswa.id_kelas_siswa = nilai.id_kelas_siswa')
                 ->join('kelas', 'kelas.id_kelas = kelas_siswa.id_kelas')
                 ->join('siswa', 'siswa.id_siswa = kelas_siswa.id_siswa')
                 ->where('kelas.id_kelas', $kelas_data)
                 ->where('kelas_siswa.status', $status)
-                // ->where('thn_ajaran.id_thn_ajaran', $thn)
+                ->where('thn_ajaran.id_thn_ajaran', $thn)
                 ->orWhere('kelas.id_kelas', $kelas_data)
                 ->orWhere('kelas_siswa.status', $status)
-                // ->orWhere('thn_ajaran.id_thn_ajaran', $thn)
+                ->orWhere('thn_ajaran.id_thn_ajaran', $thn)
                 ->findAll();
 
             // dd($nilai2);
