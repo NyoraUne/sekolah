@@ -8,7 +8,8 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Data Tables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </head>
 
@@ -54,7 +55,8 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="<?= base_url('siswa') ?>">Tambah Siswa</a>
-                                <a class="nav-link" href="<?= basename('rapor') ?>">Rapor</a>
+                                <a class="nav-link" href="<?= base_url('Nilai') ?>">Input Nilai Siswa</a>
+                                <a class="nav-link" href="<?= base_url('rapor') ?>">Rapor</a>
                                 <a class="nav-link" href="layout-sidenav-light.html">Form Naik Kelas</a>
                             </nav>
                         </div>

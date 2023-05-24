@@ -1,4 +1,4 @@
-<table id="example" class="display" style="width:100%">
+<table id="tb_nilai" class="display tb_nilai" style="width:100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -23,6 +23,6 @@
 </table>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('.tb_nilai').DataTable();
     });
 </script>

@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Mod_Siswa extends Model
+class Mod_Mapel extends Model
 {
-    protected $table      = 'siswa';
-    protected $primaryKey = 'id_siswa';
+    protected $table      = 'mapel';
+    protected $primaryKey = 'id_mapel';
 
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['nama_siswa', 'alamat_siswa', 'telp_siswa', 'created_at'];
+    protected $allowedFields = ['nama_mapel'];
 
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at ';
     protected $updatedField  = '';

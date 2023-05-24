@@ -15,11 +15,11 @@
                 <div class="col">
                     Tahun Ajaran
                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" placeholder="Tahun Ajaran">
-                        <input type="text" class="form-control" placeholder="Tahun Ajaran" hidden>
+                        <input type="text" class="form-control input_ajaran" placeholder="Tahun Ajaran">
+                        <input type="text" class="form-control input_ajaran2" placeholder="Tahun Ajaran" hidden>
                         <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Pilih Tahun Ajaran</button>
                     </div>
-                    <?= $this->include('rapor/moda_tahunajaran'); ?>
+                    <?= $this->include('rapor/modal_tahunajaran'); ?>
 
                     <button class="btn btn-sm btn-outline-primary float-end">Tampilkan Data</button>
                 </div>
