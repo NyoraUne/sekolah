@@ -1,4 +1,5 @@
             <form action="Siswa/tambah_siswa" method="post">
+                <?= csrf_field(); ?>
                 <div class="row">
                     <div class="col">
                         Nama Siswa

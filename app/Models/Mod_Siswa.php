@@ -10,7 +10,7 @@ class Mod_Siswa extends Model
     protected $primaryKey = 'id_siswa';
 
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['nama_siswa', 'alamat_siswa', 'telp_siswa', 'created_at'];
+    protected $allowedFields = ['nama_siswa', 'alamat_siswa', 'telp_siswa', 'created_at', 'slug'];
 
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';

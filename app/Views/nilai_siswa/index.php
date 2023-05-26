@@ -43,8 +43,11 @@
                                     </div>
                             </form>
                         </div>
+
                     </div>
                 </div>
+
+                <!-- Card Input Nilai -->
 
             </div>
             <div class="col">

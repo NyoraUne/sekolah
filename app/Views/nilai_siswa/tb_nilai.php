@@ -17,7 +17,7 @@
                 <td><?= $nil['nama_kelas']; ?></td>
                 <td><?= $nil['status']; ?></td>
                 <td>
-                    <button class="btn btn-outline-info btn-sm">See Full Raport</button>
+                    <a href="/Nilai/<?= $nil['slug']; ?>" class="btn btn-outline-info btn-sm">Input Nilai</a>
                 </td>
             </tr>
             <?php $i++; ?>

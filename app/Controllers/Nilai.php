@@ -95,4 +95,12 @@ class Nilai extends BaseController
             echo view('nav/foot');
         }
     }
+    public function isinilai($slug)
+    {
+        $data = [];
+
+        echo view('nav/head');
+        echo view('nilai_siswa/tbh_nilai', $data);
+        echo view('nav/foot');
+    }
 }

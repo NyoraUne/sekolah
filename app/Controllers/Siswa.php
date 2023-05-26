@@ -58,16 +58,21 @@ class siswa extends BaseController
             // Data siswa
             $nama = $this->request->getVar('nama_siswa');
             $nama = ucfirst($nama);
+            $telp = $this->request->getVar('telp_siswa');
+            $telps = substr($telp, -5);
+            $slug = url_title($this->request->getVar('nama_siswa'), '-', true);
+            $slugs = $slug . '_' . $telps;
 
             $dataSiswa = [
                 'nama_siswa' => $nama,
+                'slug' => $slugs,
                 'alamat_siswa' => $this->request->getPost('alamat_siswa'),
-                'telp_siswa' => $this->request->getPost('telp_siswa'),
+                'telp_siswa' => $telp,
             ];
+            // dd($dataSiswa);
 
             // Insert data siswa
             $siswaModel->insert($dataSiswa);
-            sleep(1);
             // Ambil ID siswa yang baru saja ditambahkan
             $idSiswa = $siswaModel->insertID();
 
