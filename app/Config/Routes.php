@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Admin::index');
 $routes->get('Nilai/(:segment)', 'Nilai::isinilai/$1');
+$routes->get('Nilai/(:segment)', 'Nilai::simpan_nilai/$1');
 
 /*
  * --------------------------------------------------------------------

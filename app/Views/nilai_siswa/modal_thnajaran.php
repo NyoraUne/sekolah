@@ -60,6 +60,8 @@
                             // Set data ke input
                             var input = document.getElementsByClassName("input_ajaran")[0];
                             var input2 = document.getElementsByClassName("input_ajaran2")[0];
+                            var input = document.getElementsByClassName("input_ajaran3")[0];
+                            var input2 = document.getElementsByClassName("input_ajaran4")[0];
                             input2.value = id;
                             input.value = semestar + " - " + thn;
                         };

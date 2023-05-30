@@ -10,7 +10,7 @@ class Mod_Mapel extends Model
     protected $primaryKey = 'id_mapel';
 
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['nama_mapel'];
+    protected $allowedFields = ['nama_mapel', 'mapel_kkm'];
 
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

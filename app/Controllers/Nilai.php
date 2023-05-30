@@ -6,6 +6,7 @@ use App\Models\Mod_Kelas;
 use App\Models\Mod_Thajaran;
 use App\Models\Mod_Nilai;
 use App\Models\Mod_Kelas_Siswa;
+use app\Models\Mod_Mapel;
 
 
 class Nilai extends BaseController
@@ -13,6 +14,7 @@ class Nilai extends BaseController
     protected $Mod_Kelas;
     protected $Mod_Kelas_Siswa;
     protected $Mod_Thajaran;
+    protected $Mod_Mapel;
     protected $Mod_Nilai;
 
 
@@ -23,6 +25,7 @@ class Nilai extends BaseController
         $this->Mod_Kelas = model(Mod_Kelas::class);
         $this->Mod_Thajaran = model(Mod_Thajaran::class);
         $this->Mod_Nilai = model(Mod_Nilai::class);
+        $this->Mod_Mapel = model(Mod_Mapel::class);
     }
 
     public function index()
@@ -36,7 +39,7 @@ class Nilai extends BaseController
         $Mod_Thajaran = new Mod_Thajaran();
         $thn_ajaran = $Mod_Thajaran->findAll();
 
-        $Mod_Nilai = new Mod_Nilai();
+
 
         // dd($nilai);
 
@@ -97,10 +100,49 @@ class Nilai extends BaseController
     }
     public function isinilai($slug)
     {
-        $data = [];
+        $Mod_Kelas_Siswa = new Mod_Kelas_Siswa();
+
+        $Mod_Mapel = new Mod_Mapel();
+        $mapel = $Mod_Mapel->findAll();
+
+        $Mod_Thajaran = new Mod_Thajaran();
+        $thn_ajaran = $Mod_Thajaran->findAll();
+
+        $siswa = $Mod_Kelas_Siswa->select('*')
+            ->join('kelas', 'kelas.id_kelas = kelas_siswa.id_kelas')
+            ->join('siswa', 'siswa.id_siswa = kelas_siswa.id_siswa')
+            ->where('siswa.slug', $slug)
+            ->findAll();
+
+
+        $data = [
+            'siswa' => $siswa,
+            'thn_ajaran' => $thn_ajaran,
+            'mapel' => $mapel,
+        ];
 
         echo view('nav/head');
         echo view('nilai_siswa/tbh_nilai', $data);
         echo view('nav/foot');
+    }
+    public function simpan_nilai($slug)
+    {
+        $Kelas_Siswa = $this->request->getVar('id_kelas_siswa');
+        $mapel = $this->request->getVar('id_mapel');
+        $thn_ajar = $this->request->getVar('thn_ajaran');
+        $nilai = $this->request->getVar('nilai');
+
+        $data = [
+            'id_kelas_siswa' => $Kelas_Siswa,
+            'id_mapel' => $mapel,
+            'nilai' => $nilai,
+            'id_thn_ajaran' => $thn_ajar,
+        ];
+
+        $tambah_nilai = new Mod_Nilai();
+        $tambah_nilai->insert($data);
+
+        // return redirect()->to('nilai/' . $slug);
+        return redirect()->back();
     }
 }
